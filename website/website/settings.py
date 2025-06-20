@@ -11,10 +11,9 @@ CART_SESSION_ID = 'cart'
 SECRET_KEY = 'django-insecure-5^ip9d_e7veye6&6e#h1bp=i4011arafc9@v!75-tr^h0a%&wi'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-print("DEBUG =", DEBUG)
+DEBUG = True
 # 404, 500, 403
-ALLOWED_HOSTS = ['b18ack.pythonanywhere.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -115,15 +114,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-
+STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'  # путь до папки со статичным контентом
 STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'media' # путь до папки контентом из админки
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

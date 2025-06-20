@@ -30,10 +30,21 @@
       </form>
 
       <a href="{% url 'item_detail' item.slug %}" class="btn btn-sm btn-link p-0">Подробнее</a>
-
-      <button class="btn btn-sm btn-outline-danger favorite-btn" title="Добавить в избранное">
-        <i class="bi bi-heart"></i>
-      </button>
+      {% if user.is_authenticated %}
+        {% if is_favorite %}
+          <a href="{% url 'remove_from_favorites' item.id %}"
+            class="btn btn-sm btn-danger favorite-btn"
+            title="Удалить из избранного">
+            <i class="fas fa-heart-broken"></i>
+          </a>
+        {% else %}
+          <a href="{% url 'add_to_favorites' item.id %}"
+            class="btn btn-sm btn-outline-danger favorite-btn"
+            title="Добавить в избранное">
+            <i class="bi bi-heart"></i>
+          </a>
+        {% endif %}
+      {% endif %}
     </div>
   </div>
 </div>
