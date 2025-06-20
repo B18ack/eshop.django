@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Форма товара
+{% endblock %}
+
+{% block content %}
+<form method='post' enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    {% if form.instance.preview %}
+      <div class="mb-3">
+        <label>Текущее превью:</label><br>
+        <img src="{{ form.instance.preview.url }}" alt="Текущее превью" style="max-width: 200px; height: auto; border: 1px solid #ccc; padding: 5px;">
+      </div>
+    {% endif %}
+
+    <div id="gallery-container" class="mb-4">
+        <label class="form-label">Галерея:</label>
+        <input type="file" name="gallery" class="form-control mb-2">
+    </div>
+
+    <button type="button" class="btn btn-outline-secondary mb-3" id="add-photo">+ Добавить ещё фото</button>
+
+    <button class="btn btn-dark">Отправить</button>
+</form>
+
+<script>
+document.getElementById('add-photo').addEventListener('click', function () {
+    const container = document.getElementById('gallery-container');
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.name = 'gallery';
+    input.className = 'form-control mb-2';
+    container.appendChild(input);
+});
+</script>
+{% endblock %}

@@ -1,0 +1,9 @@
+<a href="{% url 'favorite_list' %}" class="btn btn-danger position-relative d-inline-flex align-items-center">
+    <i class="fas fa-heart me-1"></i> Избранное
+        {% if favorite_count > 0 %}
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                {{ favorite_count }}
+            <span class="visually-hidden">избранные товары</span>
+        </span>
+        {% endif %}
+</a>

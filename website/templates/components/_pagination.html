@@ -1,0 +1,54 @@
+{% if items.has_other_pages %}
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center mt-5">
+      {% if items.has_previous %}
+      <li class="page-item">
+        {% if slug %}
+        <a class="page-link" href="?page={{ items.previous_page_number }}&category={{slug}}" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+        {% else %}
+        <a class="page-link" href="?page={{ items.previous_page_number }}" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+        {% endif %}
+        
+      </li>
+      {% endif %}
+      
+      {% for i in items.paginator.page_range %}
+      
+      {% if i == items.number %}
+      <li class="page-item">
+        <a class="page-link active">{{ i }}</a>
+      </li>
+      {% else %}
+      <li class="page-item">
+        {% if slug %}
+        <a class="page-link" href="?page={{i}}&category={{slug}}">{{ i }}</a>
+        {% else %}
+        <a class="page-link" href="?page={{i}}">{{ i }}</a>
+        {% endif %}
+      </li>
+      {% endif %}
+      
+      {% endfor %}
+
+      {% if items.has_next %}
+      
+      <li class="page-item">
+        {% if slug %}
+        <a class="page-link" href="?page={{ items.next_page_number }}&category={{slug}}" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+        {% else %}
+        <a class="page-link" href="?page={{ items.next_page_number }}" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+        {% endif %}
+      </li>
+      {% endif %}
+      
+    </ul>
+  </nav>
+{% endif %}

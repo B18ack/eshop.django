@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+FAQ
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+  <h2 class="text-center mb-4 text-primary fw-bold">Часто задаваемые вопросы</h2>
+
+  <div class="container px-4 py-4 bg-white rounded shadow-sm">
+    {% include './components/_faq.html' %}
+  </div>
+
+  <div class="text-center mt-5">
+    <a href="{% url 'home' %}" class="btn btn-outline-primary">
+      <i class="bi bi-arrow-left-circle"></i> Назад на главную
+    </a>
+  </div>
+</div>
+{% endblock %}

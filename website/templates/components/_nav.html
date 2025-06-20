@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'home' %}">
+    <i class="fas fa-shopping-cart"></i> ESHOP
+    </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          {% include "components/_dropdown_button.html" %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'faq' %}">Вопросы</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'profile' %}">Профиль</a>
+          </li>
+          <li class="nav-item me-3">
+            {% include 'components/_cart.html'%}
+          </li>
+          <li class="nav-item position-relative">
+            {% include 'components/_fav.html'%}
+          </li>
+
+        </ul>
+        <form class="d-flex" role="search" action="{% url 'search' %}">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name='q'>
+          {% comment %} ?q=значение {% endcomment %}
+          <button class="btn btn-success" type="submit">Search</button>
+        </form>
+        {% if not request.user.is_authenticated %}
+        <a href="{% url 'registration' %}" class="btn btn-warning mx-2">Регистрация</a>
+        <a href="{% url 'login' %}" class="btn btn-success me-2">Авторизация</a>
+        {% else %}
+        <a href="{% url 'logout' %}" class="btn btn-danger mx-2">Выход</a>
+        <a href="{% url 'create_item'%}" class="btn btn-info">Добавить товары</a>
+        {% endif %}
+      </div>
+    </div>
+  </nav>

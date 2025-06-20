@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Скоро будет!
+{% endblock %}
+
+{% block extra_css %}
+<style>
+  .soon-container {
+    text-align: center;
+    padding: 100px 20px;
+    animation: fadeIn 1s ease-in;
+  }
+
+  .soon-container img {
+    max-width: 250px;
+    margin-bottom: 30px;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .soon-title {
+    font-size: 2.5rem;
+    color: #7c3aed;
+    font-weight: bold;
+  }
+
+  .soon-text {
+    font-size: 1.25rem;
+    margin-top: 15px;
+    color: #555;
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="soon-container">
+  <div class="soon-title">Эта функция пока не доступна 🛠️</div>
+  <div class="soon-text">Мы уже работаем над этим. Загляни чуть позже 😉</div>
+</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+<!-- forloop - это встроенная информация о том цикле в котором мы работаем -->
+<div class="accordion" id="accordionExample">
+    {% for faq in questions %}
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-{{ faq.pk }}" aria-expanded="true" aria-controls="accordion-{{ faq.pk }}">
+         {{ faq.question }}
+        </button>
+      </h2>
+      
+      <div id="accordion-{{ faq.pk }}" 
+      class="accordion-collapse collapse {% if forloop.counter == 1 %}show{% endif %}" 
+      data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          {{ faq.answer }}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>

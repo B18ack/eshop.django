@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Избранные товары{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+  <h2 class="text-center mb-5 display-6 fw-bold">
+    <i class="fas fa-heart text-danger"></i> Мои избранные товары
+  </h2>
+
+  {% if favorites %}
+  <div class="row g-4">
+    {% for fav in favorites %}
+    <div class="col-md-4 col-lg-3">
+      <div class="card h-100 border-0 shadow-sm">
+        <div class="position-relative">
+          {% if fav.item.preview %}
+          <img src="{{ fav.item.preview.url }}" class="card-img-top" alt="{{ fav.item.title }}" width="290" height="250">
+          {% else %}
+          <img src="https://via.placeholder.com/300x200?text=Нет+фото" class="card-img-top" alt="Нет изображения" width="300" height="200">
+          {% endif %}
+          <a href="{% url 'remove_from_favorites' fav.item.id %}" class="btn btn-sm btn-danger position-absolute top-0 end-0 m-2 rounded-circle" title="Удалить из избранного">
+            <i class="fas fa-times"></i>
+          </a>
+        </div>
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title text-truncate" title="{{ fav.item.title }}">{{ fav.item.title }}</h5>
+          <div class="mt-auto">
+            <a href="{% url 'item_detail' fav.item.slug %}" class="btn btn-outline-primary w-100">
+              <i class="fas fa-eye"></i> Подробнее
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="text-center text-muted py-5">
+    <i class="fas fa-heart-broken fa-2x mb-3"></i>
+    <p class="fs-5">У вас пока нет избранных товаров.</p>
+    <a href="{% url 'home' %}" class="btn btn-outline-secondary mt-2">Перейти в каталог</a>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

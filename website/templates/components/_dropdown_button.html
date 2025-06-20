@@ -1,0 +1,21 @@
+<div class="btn-group">
+  <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+    <i class="bi bi-list"></i> Категории товаров
+  </button>
+  <ul class="dropdown-menu">
+    <li>
+      <a class="dropdown-item" href="{% url 'items' %}">
+        <i class="bi bi-box-seam"></i> Все товары
+      </a>
+    </li>
+    <li><hr class="dropdown-divider"></li>
+    {% for category in categories %}
+      <li>
+          <a class="dropdown-item" 
+            href="{% url 'items' %}?category={{ category.slug }}">
+          <i class="bi bi-tag"></i> {{ category.name }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method='post'>
+    {% csrf_token %}
+    <p>
+        Действительно ли вы хотите удалить товар: <b>{{ item.title }}</b>
+    </p>
+    <input type="submit" class="btn btn-info" value='Да, удалить'>
+    <a href="{{ item.get_absolute_url }}" class="btn btn-secondary">Нет</a>
+</form>
+{% endblock %}

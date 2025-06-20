@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Профиль
+{% endblock %}
+
+{% block content %}
+<section class="container py-5">
+    <h2 class="text-center mb-5">Личный профиль</h2>
+
+    <div class="row mb-5">
+        <div class="col-md-6">
+            <div class="card shadow-sm rounded-4">
+                <div class="card-header bg-primary text-white rounded-top-4">
+                    <h5 class="mb-0">Личная информация</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Имя: <b>{{ request.user.first_name }}</b></li>
+                    <li class="list-group-item">Юзернейм: <b>{{ request.user.username }}</b></li>
+                    <li class="list-group-item">Email: <b>{{ request.user.email }}</b></li>
+                    <li class="list-group-item">Дата регистрации: <b>{{ request.user.date_joined|date:"d.m.Y H:i" }}</b></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card shadow-sm rounded-4">
+                <div class="card-header bg-danger text-white" style="background: linear-danger(90deg, #4f46e5, #7c3aed);">
+                    <h5 class="mb-0">Статистика</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Лайков: <b class='text-success'>{{ total_likes }}</b></li>
+                    <li class="list-group-item">Дизлайков: <b class='text-danger'>{{ total_dislikes }}</b></li>
+                    <li class="list-group-item">Товаров добавлено: <b>{{ total_items }}</b></li>
+                    <li class="list-group-item">Комментариев: <b>{{ total_comments }}</b></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <h3 class="mb-4">Ваши объявления</h3>
+    <div class="row row-gap-4">
+        {% for item in items %}
+        <div class="col-md-4">
+            {% include './components/_gcard.html' %}
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <div class="alert alert-info text-center">У вас пока нет опубликованных товаров.</div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

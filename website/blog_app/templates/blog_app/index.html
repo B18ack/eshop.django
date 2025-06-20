@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="mb-5">
+    <h2 class="text-center mb-5 py-4 px-5 bg-secondary text-white rounded mx-auto" style="max-width: 320px;">
+        Товары
+    </h2>
+    
+    <div class="row g-4">
+        {% for item in items %}
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="card h-100 shadow-sm">
+                {% include './components/_gcard.html' %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="mt-4">
+        {% include 'components/_pagination.html' %}
+    </div>
+</section>
+
+<section class="mb-5">
+    <h2 class="text-center mb-4">Часто задаваемые вопросы</h2>
+    <div class="container px-4">
+        {% include './components/_faq.html' %}
+    </div>
+</section>
+{% endblock %}

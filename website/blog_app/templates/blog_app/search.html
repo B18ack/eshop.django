@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Результаты поиска
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+  <h1 class="mb-4 text-center">Результаты поиска</h1>
+
+  <div class="alert alert-light text-center shadow-sm">
+    По запросу <strong>"{{ query }}"</strong> найдено: <strong>{{ total_items }}</strong> товар(ов)
+  </div>
+
+  {% if items %}
+    <div class="row g-4 mt-4">
+      {% for item in items %}
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="card h-100 shadow-sm">
+          {% include './components/_gcard.html' %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="mt-4">
+      {% include 'components/_pagination.html' %}
+    </div>
+  {% else %}
+    <div class="alert alert-warning text-center mt-5 shadow-sm">
+      Ничего не найдено по вашему запросу. Попробуйте изменить формулировку.
+    </div>
+  {% endif %}
+
+  <div class="text-center mt-5">
+    <a href="{% url 'home' %}" class="btn btn-outline-secondary">
+      <i class="bi bi-arrow-left"></i> Вернуться в каталог
+    </a>
+  </div>
+</div>
+{% endblock %}

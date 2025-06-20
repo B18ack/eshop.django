@@ -1,0 +1,17 @@
+{% load static %}
+
+{% with total_items=cart|length %}
+  {% if total_items > 0 %}
+    <a href="{% url 'cart:cart_detail' %}" class="btn btn-success position-relative">
+      <i class="fas fa-shopping-cart"></i> Корзина
+      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+        {{ total_items }}
+        <span class="visually-hidden">товаров в корзине</span>
+      </span>
+    </a>
+  {% else %}
+    <a href="{% url 'cart:cart_detail' %}" class="btn btn-secondary">
+      <i class="fas fa-shopping-cart"></i> Корзина пуста
+    </a>
+  {% endif %}
+{% endwith %}

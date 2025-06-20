@@ -1,0 +1,51 @@
+/* index.css */
+
+body {
+    background: linear-gradient(90deg, #3b82f6, #7c3aed); /* синий -> фиолетовый */
+    min-height: 100vh; /* чтобы фон занял всю высоту окна */
+    margin: 0;
+    padding: 0;
+}
+
+/* Контейнер с белым фоном и отступами */
+.container {
+    background-color: white;
+    max-width: 1200px; /* подстрой под свой дизайн */
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    border-radius: 1rem;
+    box-shadow: 0 0 20px rgb(124 58 237 / 0.2);
+}
+
+
+section h2.bg-secondary {
+    background-color: #7c3aed !important; /* Фиолетовый из базовой темы */
+    max-width: 340px;
+    font-weight: 700;
+    font-size: 1.8rem;
+    box-shadow: 0 4px 15px rgb(124 58 237 / 0.3);
+}
+
+.card.h-100.shadow-sm {
+    border-radius: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.card.h-100.shadow-sm:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgb(124 58 237 / 0.4);
+}
+
+section h2.text-center.mb-4 {
+    color: #4c1d95;
+    font-weight: 700;
+}
+
+section > .container.px-4 {
+    background: #f9f7ff;
+    border-radius: 1rem;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 6px 18px rgb(124 58 237 / 0.15);
+}
