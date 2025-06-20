@@ -13,4 +13,9 @@ from django.core.wsgi import get_wsgi_application
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'website.settings')
 
+import django
+from django.conf import settings
+
+print(f"WSGI: DEBUG={settings.DEBUG}")
+
 application = get_wsgi_application()
